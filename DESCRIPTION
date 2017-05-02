@@ -1,0 +1,17 @@
+Package: rgallery
+Type: Package
+Title: Tools to analyze HDF5/Ntuple files
+Version: 0.1.0
+Author: Marc Paterno
+Maintainer: Marc Paterno  <paterno@fnal.gov>
+Description: This package provides facilities to read HDF5/Ntuple files.
+    The hdfstudy::hdf::Ntuple class template (not yet published) provides
+    facilities for writing "ntuple" format HDF5 files in C++ programs. This
+    package provides facilities for reading the data in such files into R
+    data.frames and data.tables.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports: data.table,
+    h5
+RoxygenNote: 6.0.1
