@@ -15,11 +15,14 @@ read.data.frame <- function(hfile, groupname)
 {
   g <- hfile[groupname] # Obtain the H5Group object
   on.exit(h5::h5close(g))
-  ds.names <- h5::list.datasets(g, full.names=FALSE)
-  ds.handles <- sapply(ds.names, FUN = function(n) g[n])
-  ds.datas <- sapply(ds.handles, h5::readDataSet)
-  sapply(ds.handles, h5::h5close)
-  as.data.frame(ds.datas)
+  dframe.from.group <- function(g) {
+    ds.names <- h5::list.datasets(g, full.names=FALSE)
+    ds.handles <- sapply(ds.names, FUN = function(n) g[n])
+    on.exit(sapply(ds.handles, h5::h5close))
+    ds.datas <- sapply(ds.handles, h5::readDataSet)
+    as.data.frame(ds.datas)
+  }
+  dframe.from.group(g)
 }
 
 #' read.data.table
