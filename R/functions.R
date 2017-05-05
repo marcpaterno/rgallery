@@ -2,12 +2,16 @@
 # This expects that the named Group contains Datasets that are all the same length.
 # The datasets should contain basic types, including fixed-size arrays of basic types.
 
-#' read.data.frame
+#' Read an ntuple from an HDF5 ntuple file.
+#'
+#' Read a Group in an HDF5 ntuple file, returning a data.frame. The Datasets in the
+#' Group will form columns in the data.frame. Datasets that are 2-dimenionsal
+#' arrays will be broken into one column for each column in the array.
 #'
 #' @param hfile The H5File object, as created by h5file.
 #' @param groupname character vector, the name of the Group to be read. Must be length 1.
 #'
-#' @return a data.frame
+#' @return a data.frame, containing as columns the Datasets in the Group
 #' @export
 #'
 
@@ -25,7 +29,15 @@ read.data.frame <- function(hfile, groupname)
   dframe.from.group(g)
 }
 
-#' read.data.table
+# Read an appropriately-organized HDF5 Group into a data.table
+# This expects that the named Group contains Datasets that are all the same length.
+# The datasets should contain basic types, including fixed-size arrays of basic types.
+
+#' Read an ntuple from an HDF5 ntuple file.
+#'
+#' Read a Group in an HDF5 ntuple file, returning a data.table. The Datasets in the
+#' Group will form columns in the data.table. Datasets that are 2-dimenionsal
+#' arrays will be broken into one column for each column in the array.
 #'
 #' @param hfile The H5File object, as created by h5file
 #' @param groupname character vector, the name of the Group to be read. Must be length 1.
