@@ -12,6 +12,7 @@ Description: This package provides facilities to read HDF5/Ntuple files.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-Imports: data.table,
+Imports:
+    data.table,
     h5
 RoxygenNote: 6.0.1
